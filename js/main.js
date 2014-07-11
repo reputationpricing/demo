@@ -33,16 +33,26 @@ function init(hotels) {
 		id: 'examples.map-i86knfo3'
 	}).addTo(map);
 	
+	mean_score = avgScore(hotels);
 	//Add hotels
 	for (var h in hotels) {
-		L.marker([hotels[h]["latitude"], hotels[h]["longitude"]]).addTo(map).bindPopup(preparePopUp(hotels[h]));
+		L.marker([hotels[h]["latitude"], hotels[h]["longitude"]]).addTo(map).bindPopup(preparePopUp(hotels[h], mean_score));
 	}
  
 }
 
-function preparePopUp(hotel) {
+function avgScore(hotels) {
+	var res = 0;
+	for (var h in hotels) res += hotels[h]["review_score"];
+	return res/hotels.length;
+}
+
+function preparePopUp(hotel, mean_score) {
+	dt_score = Number(hotel["review_score"] - mean_score).toPrecision(3);
+	if (dt_score >= 0) dt_score = "<span style='color:green;'><b>+" + dt_score + "</b></span>";
+	else dt_score = "<span style='color:red'><b>" + dt_score + "</b></span>";
 	var res = "";
-	res += "<b>" + hotel["name"] + "</b> (" + hotel["review_score"]  + ")<br>";
+	res += "<b>" + hotel["name"] + "</b> (" + hotel["review_score"]  + ") " + dt_score + "<br>";
 	res += "<i>Address</i>: " + hotel["hotel_address"] + "<br>";
 	res += "<b>Good</b>: " + hotel["top_good_words"].split("##").join(", ") + "<br>";
 	res += "<b>Bad</b>: " + hotel["top_bad_words"].split("##").join(", ") + "<br>";
