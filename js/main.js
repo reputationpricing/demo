@@ -52,7 +52,6 @@ function init(hotels) {
 	L.control.layers({}, layers).addTo(map);
 	//Activate layers
 	for (l in layers) {
-		console.log(layers[l])
 		map.addLayer(layers[l]);
 	}
 }
