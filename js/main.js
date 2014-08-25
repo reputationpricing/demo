@@ -112,7 +112,7 @@ function renameLayers (layers) {
 function avgScore(hotels) {
 	var res = 0;
 	aggDataByStars = {
-		null : {sum: 0, count: 0},
+		0 : {sum: 0, count: 0},
 		1 : {sum: 0, count: 0},
 		2 : {sum: 0, count: 0},
 		3 : {sum: 0, count: 0},
