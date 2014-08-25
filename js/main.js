@@ -6,7 +6,7 @@ var layers_state = {
 	"2 stars" : {state : true, name: 2},
 	"3 stars" : {state : true, name: 3},
 	"4 stars" : {state : true, name: 4},
-	"5 stars" : {state : true, name: 5},
+	"5 stars" : {state : true, name: 5}
 };
 var aggDataByStars = {};
 var curAvg = -1;
