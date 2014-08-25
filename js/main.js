@@ -12,7 +12,7 @@ var aggDataByStars = {};
 var curAvg = -1;
 
 $(function () {
-	console.log("loading...");
+	//console.log("loading...");
 	$.ajax({
 		url : "web_data.json",
 		dataType : "json"
